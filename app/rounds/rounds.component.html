@@ -1,0 +1,103 @@
+<br class="topm">
+<h1 class="ui center aligned header">Round {{roundNumber}}</h1>
+<div class="ui center container">
+  <div class="ui center aligned segment">
+
+    <form [formGroup]="roundForm" #formDir="ngForm">
+      <!--  <div [hidden]="formDir.submitted"> -->
+          <div class="ui segments">
+            <div class="ui segment">
+              <div class="form-group">
+                <label>Enter Partner Name  :  </label>
+                <input class="form-control"
+                   formControlName="name" required
+                    placeholder="Enter Partner Name">
+
+                    <div *ngIf="name.invalid && (name.blur || name.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="name.errors.required">
+                      <div class="ui pointing red basic label">
+                      Name is required.
+                      </div>
+                    </div>
+            <div *ngIf="name.errors.minlength">
+              <div class="ui pointing red basic label">
+                Name must be at least 2 characters long.
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="ui segment">
+            <div class="form-group">
+            <label>Select Trump  :  </label>
+            <select class="ui dropdown" class="form-control"
+               formControlName="trump">
+              <option *ngFor="let t of suit" [value]="t">{{t}}</option>
+            </select>
+
+          </div>
+          </div>
+          <div class="ui segment">
+            <div class="form-group">
+
+                <label>Round Score  :  </label>
+                <select class="ui dropdown" class="form-control"
+                   formControlName="score">
+                  <option *ngFor="let s of scores" [value]="s">{{s}}</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui center aligned segment">
+          <button class="ui left labeled icon button" (click)=Back()>
+            <i class="left arrow icon"></i>
+            Previous
+          </button>
+
+        <button class="ui right labeled icon button" [disabled]="roundForm.invalid"
+         (click)=Forward()>
+          <i class="right arrow icon"></i>
+          Next
+        </button>
+        </div>
+      </form>
+    </div>
+</div>
+
+
+<!--
+[name]="aa" (voted)="onpartner($event)"
+
+<input type="text" placeholder="Partner Name...">
+</div>
+<div class="ui center aligned segment">
+<select class="ui compact selection dropdown">
+<option selected="" value="noTrump">No Trump</option>
+<option value="Hearts">Hearts</option>
+<option value="Clubs">Clubs</option>
+<option value="Spades">Spades</option>
+<option value="Diamonds">Diamonds</option>
+</select>
+</div>
+
+<div class="ui center aligned segment">
+<select class="ui compact selection dropdown">
+<option selected="" value="zero">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+
+</select> -->
