@@ -10,7 +10,8 @@ export class PlayersService {
   private playersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.playersUrl = 'http://localhost:8080/Hello/';//'http://localhost:8084/Whist/players';
+    this.playersUrl = 'http://localhost:8080/Hello/';
+    //'http://localhost:8084/Whist/players';
   }
 
 //-----------------------------------------------------------
@@ -32,24 +33,27 @@ export class PlayersService {
 };
 //--------------------------------------------------------------------
 
-   public save(s : string): Observable<string> {
+   public save(player : Player): Observable<string> {
 
-    /* const  httpOptions = {
+     const  httpOptions = {
           headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin' : '*',
-          'Access-Control-Allow-Methods' : 'GET, POST, PUT, DELETE'
-          })
-      };*/
-      const requestOptions: Object = {
-     /* other options here */
-     responseType: 'text'
-   };
-   console.log("in save");
-    return this.http.post<any>(this.playersUrl+'details',"params", requestOptions)
-   .pipe(catchError(this.handleError));
-  }
+          'Content-Type': 'application/text'
+        })
+      };
 
+
+      //this.http.post("someurl/addData",event.newData,{ headers: headers
+     //}).subscribe(response => { console.log(response);})
+    //httpOptions.headers = { headers: headers}
+    //httpOptions.headers.set('Authorization', 'my-new-auth');
+    console.log("in save");
+    console.log(player.email+"   +  "+player.password);
+    return this.http.post<string>(
+      this.playersUrl+'details',
+      player,httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+  
   public gets(): Observable<string>{
   /*  const  httpOptions = {
          headers: new HttpHeaders({

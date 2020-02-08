@@ -1,7 +1,12 @@
 export class Player {
-  constructor(
-    public id : number,
-    public name: string,
-    ) {
+
+  public email: string;
+  public password: string;
+
+  constructor(e: string, p:string){
+    this.email=e;
+    this.password=p;
+
   }
+
 }

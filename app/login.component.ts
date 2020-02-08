@@ -1,4 +1,4 @@
-import { Component , Input,NgModule} from '@angular/core';
+import { Component , OnInit, Input,NgModule} from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayersService } from './players.service';
 import {Player} from './player.model'
@@ -9,11 +9,10 @@ import { HttpClientModule } from '@angular/common/http'
    templateUrl: 'login.component.html',
    providers:[PlayersService]
 })
-export class LoginForm {
+export class LoginForm implements OnInit {
 
- //player : Player;  //= "";
-player = {name:"",
-          password:""};
+ player : Player = {email:"",password:""};
+//player = {name:"", password:""};
 
  //name="";
  //password="";
@@ -23,9 +22,14 @@ player = {name:"",
  players : Player[];
    /*,private playerService: PlayersService*/
 
- constructor( private router: Router,private playerService: PlayersService) {
-   //this.player.name="";
-   //this.player.password="";
+ constructor(private router: Router,private playerService: PlayersService) {
+    this.player.email="test email";
+    this.player.password="Password";
+    this.sr='{ "myString": "string"}'
+   }
+   ngOnInit(){
+     //this.player.email="";
+     //this.player.password="";
    }
 
    onGet(){
@@ -33,27 +37,31 @@ player = {name:"",
      .subscribe(data => this.p =data);
      console.log("this this ppp on get "+this.p)
    }
-
+  //call player service to save player details
   onSubmit(){
-    console.log(this.player.name);
+    console.log("on submit");
+    console.log(this.player.email);
     console.log(this.player.password)
     console.log("to whist");
-    var s = this.playerService.save(this.player.name).subscribe(
-    response =>{ this.sr = response;console.log("s is :::"+ this.sr);}, //console.log("res is " +response),
+    var s = this.playerService.save(this.player).subscribe(
+    response =>{ this.sr=response/*;console.log("s is ::: "+ this.sr)*/;},
     err => console.log(err)
-  );
-
+    );
+    console.log("sr is "+this.sr);
       //this.router.navigate(['/Submit']);
     //this.router.navigate(['/Round']);
     //this.playerService.addPlayer(this.p)
     //this.router.navigate(['/UserInfo']);
   }
+  register(){
+    console.log("on submit");
+    this.router.navigate(['/Register']);
+  }
 
   jget(){
     this.playerService.getj().subscribe(
-    response =>{ this.players = response;console.log("s is :::"+ this.players[1].id);},
-    err => console.log(err)
+    response =>{ this.players = response;console.log("s is :::"+ this.players[1].email);},
+    err => console.log(err+" you have error")
   );
   }
-
 }

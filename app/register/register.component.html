@@ -1,0 +1,56 @@
+<div class="ui main text container">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+
+
+
+      <h2 class="ui teal image header">
+        <div class="content">
+          <br>
+          <button class="ui labeled icon green basic button" (click)="back()">
+            <i class="left chevron icon"></i>
+            Back
+          </button>
+          Register your details!
+        </div>
+      </h2>
+
+      <form class="ui large form segment" (ngSubmit)="RegisterUser()">
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text"   [(ngModel)] = "user.name" [ngModelOptions]="{standalone: true}" placeholder="First Name">
+
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text"   [(ngModel)] = "user.surname" [ngModelOptions]="{standalone: true}" placeholder="Surname">
+
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text"   [(ngModel)] = "user.email" [ngModelOptions]="{standalone: true}" placeholder="E-mail address">
+
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" [(ngModel)] = "user.password" [ngModelOptions]="{standalone: true}" placeholder="Password">
+            </div>
+          </div>
+          <button class="ui fluid large teal submit button" type="submit">Register</button>
+        </div>
+
+        <div class="ui error message"></div>
+
+      </form>
+    </div>
+
+  </div>
+</div>

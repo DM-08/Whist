@@ -21,6 +21,8 @@ import {Player} from './player.model'
 
 import { HttpClientModule } from '@angular/common/http';
 import { NameEditorComponent } from './name-editor/name-editor.component';
+import { RegisterComponent } from './register/register.component';
+import {RegisterService} from './register/register.service';
 
 
 const appRoutes: Routes = [
@@ -44,6 +46,10 @@ const appRoutes: Routes = [
        path: 'Name',
        component : NameEditorComponent
      },
+     {
+       path: 'Register',
+       component : RegisterComponent
+     },
    //{ path: 'Inventory', component: AppInventory },
    { path: '**', component: PageNotFoundComponent }
 ];
@@ -59,7 +65,8 @@ const appRoutes: Routes = [
     RoundsComponent,
     RoundComponent,
     PlayerInfoComponent,
-    NameEditorComponent
+    NameEditorComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PlayersService],
+  providers: [PlayersService,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
