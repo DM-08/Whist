@@ -1,5 +1,14 @@
 <br class="topm">
-<h1 class="ui center aligned header">Round {{roundNumber}}</h1>
+<h1 class="ui center aligned header">
+  <div class="content">
+    <br>
+  <button class="ui red button" (click)="logout()">
+    <i class="chevron icon"></i>
+    Logout
+  </button>
+   : Round {{roundNumber}}
+  </div>
+</h1>
 <div class="ui center container">
   <div class="ui center aligned segment">
 
@@ -60,7 +69,7 @@
         <button class="ui right labeled icon button" [disabled]="roundForm.invalid"
          (click)=Forward()>
           <i class="right arrow icon"></i>
-          Next
+          {{nextbutton}}
         </button>
         </div>
       </form>

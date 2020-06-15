@@ -1,5 +1,6 @@
 /* tslint:disable: member-ordering forin */
 //Name
+/*
 import { Component, OnInit }                  from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { forbiddenNameValidator } from './forbidden-name.directive';
@@ -31,4 +32,4 @@ export class NameEditorComponent implements OnInit {
   get name() { return this.heroForm.get('name'); }
 
   get power() { return this.heroForm.get('power'); }
-}
+}*/

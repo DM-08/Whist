@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse  } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import {Player} from '../model/player.model';
 
 @Injectable()
 export class RegisterService {
 
   private playersUrl: string;
+  response: string="";
 
   constructor(private http: HttpClient) {
-    this.playersUrl = 'http://localhost:8080/Hello/';
+    this.playersUrl = 'http://localhost:8080/Whist/register';
   }
 
   //INVALID REPLY
   private handleError(error: HttpErrorResponse) {
-    console.log("in error----------")
+    console.log("in error----------"+error)
     if (error.error instanceof ErrorEvent) {
     // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -31,21 +33,16 @@ export class RegisterService {
   };
 
   //SEND DETAILS TO SERVER
-  public addUser(): Observable<string>{
-    const  httpOptions = {
-         headers: new HttpHeaders({
+  public addUser(p:Player){
+     //Http header setting
+     const httpOptions = {
+       headers: new HttpHeaders({
+         //'Accept':'application/json',
          'Content-Type': 'application/json'
-       })
-     };
-
-    console.log("adding user in register service")
-
-    return this.http.post<string>(
-      this.playersUrl+'addUser',
-      "player",httpOptions)
-      .pipe(catchError(this.handleError));
+       })};
+       //set response type as text although this does cause errors - look into later
+       //responseType: 'text'
+    // };
+    return this.http.post(this.playersUrl,p );//JSON.stringify(p)
   }
-  //------------------------------------------------
-  //VALID REPLY
-
 }

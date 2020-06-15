@@ -1,7 +1,7 @@
 import { Component , OnInit, Input,NgModule} from '@angular/core';
 import { Router } from '@angular/router';
-import { PlayersService } from './players.service';
-import {Player} from './player.model'
+import { PlayersService } from './services/players.service';
+import {User} from './model/User.model'
 import { HttpClientModule } from '@angular/common/http'
 
 @Component ({
@@ -10,58 +10,49 @@ import { HttpClientModule } from '@angular/common/http'
    providers:[PlayersService]
 })
 export class LoginForm implements OnInit {
-
- player : Player = {email:"",password:""};
-//player = {name:"", password:""};
-
- //name="";
- //password="";
-// player.name="";
- p : string;
- sr : string;
- players : Player[];
-   /*,private playerService: PlayersService*/
+  authenticated = false;
+  player : User ;
+  loading = false;
+  error = '';
+  usr: User;
 
  constructor(private router: Router,private playerService: PlayersService) {
-    this.player.email="test email";
-    this.player.password="Password";
-    this.sr='{ "myString": "string"}'
-   }
-   ngOnInit(){
-     //this.player.email="";
-     //this.player.password="";
+    this.player =new User("email","password","");
+    this.player.email="ass";
+    this.player.password="pass";
    }
 
-   onGet(){
-     this.playerService.gets()
-     .subscribe(data => this.p =data);
-     console.log("this this ppp on get "+this.p)
-   }
-  //call player service to save player details
+  ngOnInit(){}
+
   onSubmit(){
-    console.log("on submit");
-    console.log(this.player.email);
-    console.log(this.player.password)
-    console.log("to whist");
-    var s = this.playerService.save(this.player).subscribe(
-    response =>{ this.sr=response/*;console.log("s is ::: "+ this.sr)*/;},
-    err => console.log(err)
-    );
-    console.log("sr is "+this.sr);
-      //this.router.navigate(['/Submit']);
-    //this.router.navigate(['/Round']);
-    //this.playerService.addPlayer(this.p)
-    //this.router.navigate(['/UserInfo']);
-  }
-  register(){
-    console.log("on submit");
-    this.router.navigate(['/Register']);
+    this.loading=true;
+    this.usr=new User("name","password","tok");
+    //otherwise check user details
+    this.playerService.UserLogin(this.player).subscribe(
+      data => {
+              console.log("data "+JSON.stringify(data));
+              this.usr =data;
+              if(this.usr.password==this.player.password){
+                this.authenticated = true;
+                this.router.navigate(['/Rounds']);
+              }
+              else{
+                alert("Password is incorrect!");
+                this.authenticated = false;
+              }
+              this.loading = false;
+
+              },
+      error => {
+              this.error = error;
+              console.log("Err"+ this.error);
+              this.loading = false;
+              alert("Issue With Server Connection!");
+            });
   }
 
-  jget(){
-    this.playerService.getj().subscribe(
-    response =>{ this.players = response;console.log("s is :::"+ this.players[1].email);},
-    err => console.log(err+" you have error")
-  );
+  //New player go to registartion screen
+  register(){
+    this.router.navigate(['/Register']);
   }
 }

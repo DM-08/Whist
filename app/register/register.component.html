@@ -15,42 +15,55 @@
         </div>
       </h2>
 
-      <form class="ui large form segment" (ngSubmit)="RegisterUser()">
+      <form class="ui large form segment" id="form" (ngSubmit)="RegisterUser()">
+
         <div class="ui stacked segment">
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text"   [(ngModel)] = "user.name" [ngModelOptions]="{standalone: true}" placeholder="First Name">
+              <input type="text" [(ngModel)]="play.fname" [ngModelOptions]="{standalone: true}" placeholder="First Name">
 
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text"   [(ngModel)] = "user.surname" [ngModelOptions]="{standalone: true}" placeholder="Surname">
+              <input type="text" [(ngModel)]="play.sname" [ngModelOptions]="{standalone: true}" placeholder="Surname">
 
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text"   [(ngModel)] = "user.email" [ngModelOptions]="{standalone: true}" placeholder="E-mail address">
+              <input type="text" [(ngModel)]="play.email" [ngModelOptions]="{standalone: true}" placeholder="E-mail address">
 
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input type="password" [(ngModel)] = "user.password" [ngModelOptions]="{standalone: true}" placeholder="Password">
+              <input type="password" [(ngModel)]="play.password" [ngModelOptions]="{standalone: true}" placeholder="Password">
             </div>
           </div>
           <button class="ui fluid large teal submit button" type="submit">Register</button>
+
+          <!-- ################################### -->
+
+
         </div>
 
-        <div class="ui error message"></div>
 
       </form>
-    </div>
 
+      <div class="ui hidden error message" id="errmss">
+        <i class="close icon" (click)="close()"></i>
+        <div class="header">
+          There were some errors with your submission
+        </div>
+        <ul class="list">
+          <li>{{error}}</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
-</div>

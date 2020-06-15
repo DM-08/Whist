@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output ,Input, AfterViewInit,OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {Round} from '../round.model';
+import {Round} from '../model/round.model';
 import { HttpClient } from '@angular/common/http';
 declare var $ : any;
 

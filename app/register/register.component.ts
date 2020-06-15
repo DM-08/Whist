@@ -1,22 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterDetails} from '../register.model';
 import { Router } from '@angular/router';
 import{RegisterService} from './register.service';
-
+import {Player} from '../model/player.model';
+import * as $ from 'jquery';
+declare var $:any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   providers:[RegisterService]
 })
 export class RegisterComponent implements OnInit {
-
-  user ={name:"",surname:"",email_address:"",password:""};
-  sr :string;
+   play: Player;
+   loading:boolean;
+   error: string;
   constructor(private router: Router,private registerService:RegisterService) {
-    this.sr='{ "myString": "string"}'
+    this.play =new Player();
+    this.play.fname="Carl";
+    this.play.sname="kop";
+    this.play.email="ass";
+    this.play.password="pass";
+    this.loading=false;
+    this.error="";
   }
 
   ngOnInit() {
+
+  }
+  close(){
+    console.log("close");
+    //$(errmss).hide();
+    document.getElementById('errmss').classList.add('hidden');
   }
 
   back(){
@@ -24,13 +37,23 @@ export class RegisterComponent implements OnInit {
   }
 
   RegisterUser(){
-    //this.register.addUser().subscribe(data => this.p =data);
-    var s = this.registerService.addUser().subscribe(
-    response =>{ this.sr=response;console.log("s is ::: "+ this.sr);},
-    err => console.log(err)
-   );
-    console.log("pa  "+this.sr);
-    //console.log("pa  "+this.player);
-    //console.log("pa  "+this.player);
+    this.loading=true;
+    document.getElementById('form').classList.add('loading');
+    document.getElementById('errmss').classList.add('hidden');
+    this.registerService.addUser(this.play).subscribe(
+    data=>{
+      //this.res=JSON.stringify(data);
+      this.loading=false;
+      console.log(data+"-- res response");
+      document.getElementById('form').classList.remove('loading');
+    },
+    err =>{
+      console.log(err);
+      document.getElementById('form').classList.remove('loading');
+      document.getElementById('errmss').classList.remove('hidden');
+      //alert(err.error.text);
+      this.error= err.error.text;
+    });
   }
+
 }
