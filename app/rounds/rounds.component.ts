@@ -99,6 +99,10 @@ export class RoundsComponent implements OnInit {
     }
     this.proceed=true;
   }
+  //to do *  when logout is pressed
+  logout(){
+    console.log("out");
+  }
 
 
 }

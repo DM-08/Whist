@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
     document.getElementById('form').classList.add('loading');
     document.getElementById('errmss').classList.add('hidden');
     this.registerService.addUser(this.play).subscribe(
+
     data=>{
       //this.res=JSON.stringify(data);
       this.loading=false;
@@ -48,11 +49,14 @@ export class RegisterComponent implements OnInit {
       document.getElementById('form').classList.remove('loading');
     },
     err =>{
-      console.log(err);
+      console.log(err.error);
       document.getElementById('form').classList.remove('loading');
       document.getElementById('errmss').classList.remove('hidden');
+      console.log('aaa');
       //alert(err.error.text);
-      this.error= err.error.text;
+      console.log('aaa'+ err);
+      this.error= err.error;
+      console.log('bbb'+ this.error);
     });
   }
 

@@ -43,6 +43,6 @@ export class RegisterService {
        //set response type as text although this does cause errors - look into later
        //responseType: 'text'
     // };
-    return this.http.post(this.playersUrl,p );//JSON.stringify(p)
+    return this.http.post(this.playersUrl,p ).pipe();//JSON.stringify(p)
   }
 }

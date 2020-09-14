@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http'
 @Component ({
    selector: 'app-login',
    templateUrl: 'login.component.html',
-   providers:[PlayersService]
+   providers:[PlayersService],
+   styleUrls: ['login.component.css']
 })
 export class LoginForm implements OnInit {
   authenticated = false;
@@ -51,7 +52,7 @@ export class LoginForm implements OnInit {
             });
   }
 
-  //New player go to registartion screen
+  //New player go to registration screen
   register(){
     this.router.navigate(['/Register']);
   }
