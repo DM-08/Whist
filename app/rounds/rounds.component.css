@@ -1,3 +1,91 @@
 ui.topm{
     margin-top:200px;
  }
+
+ .backg{
+   background-color: lightslategrey;
+
+   /* Control the height of the image */
+   min-height: 100%;
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+ }
+ .ui.input.bor
+ {
+   border-color: #21ba45;
+   font-size: 1rem;
+   border-radius: .28571429rem;
+    border-top-left-radius: 0.285714rem;
+    border-top-right-radius: 0.285714rem;
+    border-bottom-right-radius: 0.285714rem;
+    border-bottom-left-radius: 0.285714rem;
+ }
+
+ .ui.aligned.segment1
+ {
+   border-color: #21ba45;
+   border-width: thick;
+   border-radius: .28571429rem;
+    border-top-left-radius: 0.285714rem;
+    border-top-right-radius: 0.285714rem;
+    border-bottom-right-radius: 0.285714rem;
+    border-bottom-left-radius: 0.285714rem;
+ }
+
+ .ui.segments.bor
+ {
+   border-color: #21ba45;
+   border-width: 10;
+   border-radius: .28571429rem;
+   border: inherit;
+    border-top-left-radius: 0.285714rem;
+    border-top-right-radius: 0.285714rem;
+    border-bottom-right-radius: 0.285714rem;
+    border-bottom-left-radius: 0.285714rem;
+ }
+ .ui.segment.bor
+ {
+   border-color: #21bc45;
+
+   border-radius: .28571429rem;
+    border-top-left-radius: 0.285714rem;
+    border-top-right-radius: 0.285714rem;
+    border-bottom-right-radius: 0.285714rem;
+    border-bottom-left-radius: 0.285714rem;
+ }
+
+ .roundnext{
+   background-color: cyan;
+   width: 40%;
+ }
+ .rn{
+   background-color: blue;
+ }
+
+ .roundprev{
+   background-color: orange;
+   width: 30%;
+   padding-left: 5000px;
+ }
+
+ .endseg{
+   background-color: aliceblue;
+ }
+.p2{
+  font-family: arial;
+}
+
+.one {
+    background-color: yellow; /* !important;*/
+}
+
+.two {
+    background-color: red; /* !important;*/
+}
+.two.active.selected {
+    color: red; /* !important;*/
+}

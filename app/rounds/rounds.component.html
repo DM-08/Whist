@@ -1,3 +1,5 @@
+<div class="backg">
+
 <br class="topm">
 <h1 class="ui center aligned header">
   <div class="content">
@@ -10,15 +12,15 @@
   </div>
 </h1>
 <div class="ui center container">
-  <div class="ui center aligned segment">
+  <div class="ui center aligned segment segment1 ">
 
-    <form [formGroup]="roundForm" #formDir="ngForm">
+    <form [formGroup]="roundForm" #formDir="ngForm" >
       <!--  <div [hidden]="formDir.submitted"> -->
           <div class="ui segments">
-            <div class="ui segment">
+            <div class="ui segment bor">
               <div class="form-group">
-                <label>Enter Partner Name  :  </label>
-                <input class="form-control"
+                <label class =p2><b>Enter Partner Name  :  </b></label>
+                <input class="ui input bor"
                    formControlName="name" required
                     placeholder="Enter Partner Name">
 
@@ -38,13 +40,31 @@
           </div>
           </div>
           </div>
-          <div class="ui segment">
+          <div class="ui segment bor">
             <div class="form-group">
-            <label>Select Trump  :  </label>
+          <!--  <label>Select Trump  :  </label>
             <select class="ui dropdown" class="form-control"
                formControlName="trump">
               <option *ngFor="let t of suit" [value]="t">{{t}}</option>
-            </select>
+            </select> -->
+
+
+        <div class="ui buttons" id="tt">
+          <div id="dropdownMenu" class="ui floating dropdown icon button">
+            <input type="hidden" name="student">
+            <div class="default text " >Select a suit</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item one" id="ione">No Trump</div>
+              <div class="item two" id="itwo">Hearts</div>
+              <div class="item">Spades</div>
+              <div class="item">Clubes</div>
+              <div class="item">Diamonds</div>
+            </div>
+            </div>
+        </div>
+
+
 
           </div>
           </div>
@@ -60,13 +80,13 @@
           </div>
         </div>
 
-        <div class="ui center aligned segment">
-          <button class="ui left labeled icon button" (click)=Back()>
+        <div class="ui center aligned segment endseg">
+          <button class="ui left labeled icon button roundprev" (click)=Back()>
             <i class="left arrow icon"></i>
             Previous
           </button>
 
-        <button class="ui right labeled icon button" [disabled]="roundForm.invalid"
+        <button class="ui right labeled icon button roundnext" [disabled]="roundForm.invalid"
          (click)=Forward()>
           <i class="right arrow icon"></i>
           {{nextbutton}}
@@ -76,7 +96,7 @@
     </div>
 </div>
 
-
+</div>
 <!--
 [name]="aa" (voted)="onpartner($event)"
 

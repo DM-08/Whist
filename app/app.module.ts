@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //import { HttpModule } from '@angular/http';
-import { LoginForm } from './login.component';
+import { LoginForm } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FormsModule } from '@angular/forms';
@@ -30,6 +30,7 @@ import { appRoutingModule } from './app.routing';
 import {AuthGuard} from './services/auth.guard';
 import { JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor } from './helpers/error.interceptor';
+import { EndGameComponent } from './end-game/end-game.component';
 /*
 const appRoutes: Routes = [
    { path: '',
@@ -63,6 +64,9 @@ const appRoutes: Routes = [
 ];
 export const appRoutingModule = RouterModule.forRoot(routes);
 */
+declare var $: any;
+console.log(`jQuery version: ${$.fn.jquery}`);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +79,8 @@ export const appRoutingModule = RouterModule.forRoot(routes);
     //NameEditorComponent,
     RegisterComponent,
     //appRoutingModule,
-    DiceComponent
+    DiceComponent,
+    EndGameComponent
   ],
   imports: [
     BrowserModule,

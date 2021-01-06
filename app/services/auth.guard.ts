@@ -1,7 +1,8 @@
 //will check if user is authorised to proceed
 //not logged in what areas can they access.
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, CanActivate,
+  ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 //need to import service also
 import { PlayersService } from './players.service';

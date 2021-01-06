@@ -1,0 +1,46 @@
+body {
+  background-image: url('/assets/playingcards.jfif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 70% 100%;
+  background-position: center;
+}
+center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    height:50;
+}
+div.ui.container{
+  width:80%;
+}
+.midal{
+  background-color:lightcyan; 
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("/assets/playingcards.jfif");
+
+  /* Control the height of the image */
+  min-height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.con {
+  /*position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;*/
+  background-color: #33A2FF;
+}
+
+
+/* <div style="background-image: url('assets/playing cards.jfif');" */

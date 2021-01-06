@@ -2,7 +2,7 @@ import { RoundsComponent } from './rounds/rounds.component';
 import { RoundComponent } from './round/round.component';
 //import { NameEditorComponent } from './name-editor/name-editor.component';
 import { RegisterComponent } from './register/register.component';
-import { LoginForm } from './login.component';
+import { LoginForm } from './login/login.component';
 import { Whist } from './whist.component';
 
 import { Routes, RouterModule } from '@angular/router';

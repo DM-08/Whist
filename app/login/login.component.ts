@@ -1,7 +1,7 @@
 import { Component , OnInit, Input,NgModule} from '@angular/core';
 import { Router } from '@angular/router';
-import { PlayersService } from './services/players.service';
-import {User} from './model/User.model'
+import { PlayersService } from '../services/players.service';
+import {User} from '../model/User.model'
 import { HttpClientModule } from '@angular/common/http'
 
 @Component ({
@@ -28,7 +28,11 @@ export class LoginForm implements OnInit {
   onSubmit(){
     this.loading=true;
     this.usr=new User("name","password","tok");
+
+    localStorage.setItem('currentUser',JSON.stringify(this.usr) );//JSON.stringify(user)
+    this.router.navigate(['/Rounds']);
     //otherwise check user details
+    /* // FOR SENDING USER DETAILS TO SERVER ---------------
     this.playerService.UserLogin(this.player).subscribe(
       data => {
               console.log("data "+JSON.stringify(data));
@@ -49,7 +53,9 @@ export class LoginForm implements OnInit {
               console.log("Err"+ this.error);
               this.loading = false;
               alert("Issue With Server Connection!");
-            });
+            }); */
+            //REMOVE BELOW EVENTUALLY
+            this.loading = false;
   }
 
   //New player go to registration screen
